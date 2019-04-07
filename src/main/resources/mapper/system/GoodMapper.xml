@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.system.dao.GoodMapper">
+  <resultMap id="BaseResultMap" type="cc.mrbird.system.domain.Good">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="GOODS_ID" jdbcType="DECIMAL" property="goodsId" />
+    <result column="GOODS_NAME" jdbcType="VARCHAR" property="goodsName" />
+    <result column="MEDICINEMODEL" jdbcType="VARCHAR" property="medicinemodel" />
+    <result column="OUTLOOK" jdbcType="VARCHAR" property="outlook" />
+    <result column="FACTOR" jdbcType="VARCHAR" property="factor" />
+    <result column="UNIT" jdbcType="VARCHAR" property="unit" />
+    <result column="MATERIAL_NAME" jdbcType="VARCHAR" property="materialName" />
+    <result column="COMPANY_NAME_SC" jdbcType="VARCHAR" property="companyNameSc" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+  </resultMap>
+  
+  <select id="findGoodList" resultType="good" parameterType="good">
+  		select u.goods_id goodsId,u.factor,u.goods_name goodsName,u.price,u.medicinemodel,u.material_name materialName,u.outlook outlook,
+  		u.unit,u.company_name_sc companyNameSc from t_good u
+  		<where>
+			<if test="goodsName != null and goodsName != ''">
+				AND u.goods_name = #{goodsName}
+			</if>
+			<if test="companyNameSc != null and companyNameSc != ''">
+				AND u.company_name_sc = #{companyNameSc}
+			</if>
+			<if test="price != null and price != ''">
+				AND u.price = #{price}
+			</if>
+		</where>
+  </select>
+
+    <select id="findByGoodsId" resultType="good" parameterType="good">
+        select u.goods_id goodsId,u.factor,u.goods_name goodsName,u.price,u.medicinemodel,u.material_name materialName,u.outlook outlook,
+        u.unit,u.company_name_sc companyNameSc from t_good u
+        <where>
+            <if test="goodsId != null and goodsId != ''">
+                AND u.goods_id = #{goodsId}
+            </if>
+        </where>
+        limit 0,1
+    </select>
+
+    <update id="updateGood"  parameterType="good">
+        update t_good
+        <set>
+            goods_name = #{goodsName},
+            medicinemodel = #{medicinemodel},
+            outlook = #{outlook},
+            factor = #{factor},
+            unit = #{unit},
+            material_name = #{materialName},
+            company_name_sc = #{companyNameSc},
+            price = #{price}
+        </set>
+        where goods_id = #{goodsId}
+    </update>
+
+    <delete id="deleteGoods" parameterType="list">
+        delete from t_good where goods_id in
+        <foreach collection="list" item="goodsId" open="(" separator="," close=")">
+            #{goodsId}
+        </foreach>
+    </delete>
+  
+</mapper>

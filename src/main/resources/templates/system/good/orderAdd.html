@@ -1,0 +1,117 @@
+<div class="modal fade" id="order-add" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-left" id="order-add-modal-title">新增采购单</h3>
+            </div>
+            <div class="modal-body">
+                <form id="order-add-form">
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 通用名：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="goodsName" class="form-control" readonly="readonly">
+                                    <input type="text" hidden name="goodsId" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 生产企业名称：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="companyNameSc" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 价格：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="price" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 采购数量：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="purchaseCount" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group" style="margin-top:10px;">
+                                <span class="input-group-addon">
+					               	是否添加到已有采购单：
+					             </span>
+                                <div class="form-group">
+                                    <label class="custom-control custom-radio">
+                                        <input name="hasOrder" type="radio" value="0" class="custom-control-input" checked="checked">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">否</span>
+                                    </label>
+                                    <label class="custom-control custom-radio">
+                                        <input name="hasOrder" type="radio" value="1" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">是</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 订单名称：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="newOrderName" id="orderName" class="form-control">
+                                    <select name="oldOrderName" hidden="hidden" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="remarksDiv">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 订单备注：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="orderRemarks" id="orderRemarks" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-save" id="order-add-button" name="save">添加</button>
+                <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                <button class="btn-hide"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/system/good/orderAdd.js}"></script>
